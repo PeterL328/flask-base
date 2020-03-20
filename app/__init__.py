@@ -11,6 +11,7 @@ from flask_wtf import CSRFProtect
 
 from app.assets import app_css, app_js, vendor_css, vendor_js
 from config import config as Config
+from sqlalchemy import create_engine  
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 
@@ -18,6 +19,16 @@ mail = Mail()
 db = SQLAlchemy()
 csrf = CSRFProtect()
 compress = Compress()
+############################
+'''
+you can comment out this part if the your local db has not setup yet
+''' 
+db_user = ""
+password=""
+database=""
+db_url = "postgresql+psycopg2://"+db_user+":"+password+"@localhost:5432/"+database
+easy_db = create_engine(db_url)
+############################
 
 # Set up Flask-Login
 login_manager = LoginManager()
