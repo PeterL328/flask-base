@@ -23,9 +23,9 @@ compress = Compress()
 '''
 you can comment out this part if the your local db has not setup yet
 ''' 
-db_user = ""
-password=""
-database=""
+db_user = "peter"
+password="peterleng"
+database="postgres"
 db_url = "postgresql+psycopg2://"+db_user+":"+password+"@localhost:5432/"+database
 easy_db = create_engine(db_url)
 ############################
@@ -53,9 +53,10 @@ def create_app(config):
     mail.init_app(app)
     db.init_app(app)
     login_manager.init_app(app)
-    csrf.init_app(app)
+    # csrf.init_app(app)
     compress.init_app(app)
     RQ(app)
+
 
     # Register Jinja template functions
     from .utils import register_template_utils
@@ -87,5 +88,8 @@ def create_app(config):
 
     from .admin import admin as admin_blueprint
     app.register_blueprint(admin_blueprint, url_prefix='/admin')
+
+    from .api import api as api_blueprint
+    app.register_blueprint(api_blueprint, url_prefix='/api')
 
     return app
