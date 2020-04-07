@@ -24,9 +24,11 @@ itsdangerous==1.1.0
 Jinja2==2.10.1
 jsmin==2.2.2
 jsonpickle==1.2
+numpy=1.18.2
 Mako==1.1.0
 MarkupSafe==1.1.1
 packaging==19.1
+pandas==1.0.3
 pipupgrade==1.5.1
 psycopg2==2.8.3
 pyparsing==2.4.2

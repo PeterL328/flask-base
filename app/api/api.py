@@ -8,9 +8,6 @@ api = Blueprint('api', __name__)
 @api.route('/store_data', methods=['POST'])
 def store_data():
     json_data = request.get_json(force=True)
-    # Readings format timestamp: (long, lat, z_acceleration)Search Results
-    # Web result with site links
-    # Latitude and Longitude
     # example_input = {
     #     "2018-12-25 09:27:53": {
     #         "long": 123,
@@ -32,7 +29,7 @@ def store_data():
         easy_db.execute(f"INSERT INTO raw_data VALUES (point({long}, {lat}), '{key}', {z_acceleration})")
 
     # Process window of acceleration values
-    pothole_locations = calculate_potholes(z_acceleration)
+    pothole_locations = calculate_potholes(sensor_readings)
 
     found_potholes = False if pothole_locations == [] else True
 
