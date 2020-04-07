@@ -23,9 +23,9 @@ compress = Compress()
 '''
 you can comment out this part if the your local db has not setup yet
 ''' 
-db_user = "peter"
-password="peterleng"
-database="postgres"
+db_user = ""
+password=""
+database=""
 db_url = "postgresql+psycopg2://"+db_user+":"+password+"@localhost:5432/"+database
 easy_db = create_engine(db_url)
 ############################
